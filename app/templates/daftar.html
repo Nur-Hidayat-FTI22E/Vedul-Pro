@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar</title>
-    <link rel="icon" href="./img/logo.png" type="image/x-icon">
-    <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='utama/img/logo.png')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='utama/img/logo.png')}}" type="image/x-icon">
 
 <style>
  body {
@@ -68,24 +68,30 @@ button:hover {
 </head>
 <body>
     <div class="container">
-        <form action="#" method="post">
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
             <h2 style="text-align: center;">Daftar</h2>
 
-            <label for="username">Nama Lengkap</label>
-            <input type="text" id="username" name="username" placeholder="Nama lengkap" required>
+            <label for="namalengkap">Nama Lengkap</label>
+            <!-- <input type="text" id="username" name="username" placeholder="Nama lengkap" required> -->
+            {{ form.namalengkap(id="namalengkap", placeholder="Nama lengkap") }}
 
             <label for="email">Alamat Email</label>
-            <input type="email" id="email" name="email" placeholder="Alamat email" required>
+            <!-- <input type="email" id="email" name="email" placeholder="Alamat email" required> -->
+            {{ form.email(id="email", placeholder="terserah@gmail.com")}}
 
             <label for="password">Kata Sandi</label>
-            <input type="password" id="password" name="password" placeholder="Kata sandi minimal 8 karakter" required>
+            <!-- <input type="password" id="password" name="password" placeholder="Kata sandi minimal 8 karakter" required> -->
+            {{ form.password(id="password",placeholder="......")}}
 
-            <label for="confirm-password">Konfirmasi Kata Sandi</label>
-            <input type="password" id="confirm-password" name="confirm-password" placeholder="Konfirmasi kata sandi" required>
+            <label for="password_lagi">Konfirmasi Kata Sandi</label>
+            <!-- <input type="password" id="confirm-password" name="confirm-password" placeholder="Konfirmasi kata sandi" required> -->
+            {{ form.password_lagi(id="password_lagi", placeholder="......") }}
 
-            <button type="submit">Daftar</button>
+            <!-- <button type="submit">Daftar</button> -->
+            {{ form.submit() }}
 
-            <p style="text-align: center; color: #636363;">Sudah punya akun? <a href="./login.html">Masuk</a></p>
+            <p style="text-align: center; color: #636363;">Sudah punya akun? <a href="{{ url_for('login')}}">Masuk</a></p>
         </form>
     </div>
 </body>

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="icon" href="./img/logo.png" type="image/x-icon">
-    <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='utama/img/logo.png')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='utama/img/logo.png')}}" type="image/x-icon">
 
 <style>
  body {
@@ -69,17 +69,22 @@ button:hover {
 <body>
     <div class="container">
         <form action="#" method="post">
+            {{ form.hidden_tag() }}
             <h2 style="text-align: center;">Masuk</h2>
 
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="Username" required>
+            <label for="email">Email</label>
+            <!-- <input type="text" id="username" name="username" placeholder="Username" required> -->
+            {{ form.email(id="email", placeholder="contoh@gmail.com") }}
 
-            <label for="email">Password</label>
-            <input type="email" id="email" name="email" placeholder="Password" required>
 
-            <button type="submit">Masuk</button>
+            <label for="password">Password</label>
+            <!--<input type="email" id="email" name="email" placeholder="Password" required> -->
+            {{ form.password(id="password", placeholder="terserah") }}
 
-            <p style="text-align: center; color: #636363;">Belum punya akun? <a href="./daftar.html">Daftar</a></p>
+            <!-- <button type="submit"><a href="{{ url_for('home')}}" style="text-align: center; color: #FFFFFF;"> Masuk </a></button> -->
+            {{ form.submit() }}
+
+            <p style="text-align: center; color: #636363;">Belum punya akun? <a href="{{ url_for('daftar')}}">Daftar</a></p>
         </form>
     </div>
 </body>
