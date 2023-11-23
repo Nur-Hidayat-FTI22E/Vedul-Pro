@@ -71,24 +71,25 @@ button:hover {
         <form action="" method="post">
             {{ form.hidden_tag() }}
             <h2 style="text-align: center;">Daftar</h2>
-
+           
             <label for="namalengkap">Nama Lengkap</label>
-            <!-- <input type="text" id="username" name="username" placeholder="Nama lengkap" required> -->
             {{ form.namalengkap(id="namalengkap", placeholder="Nama lengkap") }}
 
+            <label for="username">Username</label>
+            {{ form.username(id="username", placeholder="username") }}
+
             <label for="email">Alamat Email</label>
-            <!-- <input type="email" id="email" name="email" placeholder="Alamat email" required> -->
-            {{ form.email(id="email", placeholder="terserah@gmail.com")}}
+            {{ form.email(id="email", placeholder="terserah@gmail.com")}} 
+            
+            <label for="hp">No. Hp</label>
+            {{ form.hp(id="hp", placeholder="+0 00000000")}}
 
             <label for="password">Kata Sandi</label>
-            <!-- <input type="password" id="password" name="password" placeholder="Kata sandi minimal 8 karakter" required> -->
             {{ form.password(id="password",placeholder="......")}}
 
             <label for="password_lagi">Konfirmasi Kata Sandi</label>
-            <!-- <input type="password" id="confirm-password" name="confirm-password" placeholder="Konfirmasi kata sandi" required> -->
             {{ form.password_lagi(id="password_lagi", placeholder="......") }}
 
-            <!-- <button type="submit">Daftar</button> -->
             {{ form.submit() }}
 
             <p style="text-align: center; color: #636363;">Sudah punya akun? <a href="{{ url_for('login')}}">Masuk</a></p>

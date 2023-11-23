@@ -52,7 +52,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ url_for('profile')}}" style="display: flex; align-items: center;">
                     <img src="https://png.pngtree.com/png-clipart/20221101/ourlarge/pngtree-passport-photo-cartoon-design-png-image_6405813.png" alt="Profil Icon" style="width: 20px; height: 20px; margin-right: 5px;">
-                    <span>Profil Saya</span>
+                    <span>{{ current_user.username }}</span>
                 </a>
             </li><!-- End Dashboard Nav -->
             
@@ -107,13 +107,13 @@
                 <div class="card">
                     <div class="card-body p-4">
                         <h4 class="text-center card-title"><strong>Profil Saya</strong></h4><button class="btn btn-primary" type="button" style="background: #5200FF;"><strong>INFORMASI PRIBADI</strong></button>
-                        <p class="card-text"><strong>Nama Lengkap : Fauzan Azhari Rahman</strong><br><strong>Email&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: 105841109622@student.unismuh.ac.id</strong><br><strong>No. Telepon&nbsp; &nbsp; &nbsp; : +62 852 4546 0805</strong><br><strong>Alamat&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : Jl. Monumen Emmy Saelan&nbsp; III No. 70, Karunrung, Kec. Rapoocini, Kota Makassar</strong></p><button class="btn btn-primary" type="button" style="background: #5200FF;"><strong>INFORMASI AKUN</strong></button>
-                        <p class="card-text"><strong>Nama Pengguna&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : Fauzan Azhari</strong><br><strong>Tanggal Pembuatan Akun : 09 Oktober 2023</strong><br><strong>Status&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : Terdaftar</strong></p>
+                        <p class="card-text"><strong>Nama Lengkap : {{ current_user.namalengkap }}</strong><br><strong>Email&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: {{ current_user.email }}</strong><br><strong>No. Telepon&nbsp; &nbsp; &nbsp; : {{ current_user.hp }}</strong><button class="btn btn-primary" type="button" style="background: #5200FF;"><strong>INFORMASI AKUN</strong></button>
+                        <p class="card-text"><strong>Nama Pengguna&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : {{ current_user.username }}</strong><br><strong>Tanggal Pembuatan Akun : {{ current_user.date_create_user }}</strong><br><strong>Status&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : Terdaftar</strong></p>
                     </div>
                 </div>
             </div>
             <div class="col" style="background: #5200FF;">
-                <div class="card" style="margin-top: 20px;"><img class="card-img-top w-100 d-block fit-cover" style="height: 380px;" src="https://simak.unismuh.ac.id/upload/mahasiswa/105841115422.jpg?1700558019" width="334" height="250" ></div>
+                <div class="card" style="margin-top: 20px;"><img class="card-img-top w-100 d-block fit-cover" style="height: 380px;" src="https://png.pngtree.com/png-clipart/20221101/ourlarge/pngtree-passport-photo-cartoon-design-png-image_6405813.png" width="334" height="250" ></div>
             </div>
         </div>
     </div>

@@ -56,7 +56,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ url_for('profile')}}" style="display: flex; align-items: center;">
                     <img src="https://png.pngtree.com/png-clipart/20221101/ourlarge/pngtree-passport-photo-cartoon-design-png-image_6405813.png" alt="Profil Icon" style="width: 20px; height: 20px; margin-right: 5px;">
-                    <span>Profil Saya</span>
+                    <span>{{ current_user.username }}</span>
                 </a>
             </li><!-- End Dashboard Nav -->
             

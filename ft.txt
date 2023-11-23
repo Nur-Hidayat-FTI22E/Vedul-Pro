@@ -1,0 +1,6 @@
+flask
+flask-sqlalchemy
+    -migrate
+    -login
+    -wtform
+    -

@@ -47,7 +47,7 @@
     <i class="bi bi-list toggle-sidebar-btn"></i>
   </div>
   <div class="d-flex align-items-center justify-content-between">
-    <a href="#" class="logo d-flex align-items-center" style="text-decoration: none;">
+    <a href="{{ url_for('home')}}" class="logo d-flex align-items-center" style="text-decoration: none;">
       <!-- <img src="assets/img/logo.png" alt=""> -->
       <span class="d-none d-lg-block">VedulPro</span>
     </a>
@@ -64,7 +64,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ url_for('home')}}" style="display: flex; align-items: center;">
                     <img src="https://png.pngtree.com/png-clipart/20221101/ourlarge/pngtree-passport-photo-cartoon-design-png-image_6405813.png" alt="Profil Icon" style="width: 20px; height: 20px; margin-right: 5px;">
-                    <span>Profil Saya</span>
+                    <span>{{ current_user.username }}</span>
                 </a>
             </li><!-- End Dashboard Nav -->
             

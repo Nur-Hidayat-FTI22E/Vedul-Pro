@@ -43,7 +43,7 @@
     <i class="bi bi-list toggle-sidebar-btn"></i>
   </div>
   <div class="d-flex align-items-center justify-content-between">
-    <a href="#" class="logo d-flex align-items-center" style="text-decoration: none;">
+    <a href="{{ url_for('home')}}" class="logo d-flex align-items-center" style="text-decoration: none;">
       <!-- <img src="assets/img/logo.png" alt=""> -->
       <span class="d-none d-lg-block">VedulPro</span>
     </a>
@@ -60,7 +60,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ url_for('profile')}}" style="display: flex; align-items: center;">
                     <img src="https://png.pngtree.com/png-clipart/20221101/ourlarge/pngtree-passport-photo-cartoon-design-png-image_6405813.png" alt="Profil Icon" style="width: 20px; height: 20px; margin-right: 5px;">
-                    <span>Profil Saya</span>
+                    <span>{{ current_user.username }}</span>
                 </a>
             </li><!-- End Dashboard Nav -->
             
@@ -116,107 +116,33 @@
 
 
     <section class="section">
+
       <div style="display: flex; align-items: flex-end; padding: 10px; border-radius: 5px;">
         <span style="font-size: 24px; color: #333;">🔍</span>
         <input type="text" id="search-input" style="border: 2px solid #5200FF; padding: 5px; border-radius: 5px; outline: none; font-size: 16px; background-color: white;" placeholder="Cari modul...">
       </div>
       <div class="row" style="display: flex; justify-content: space-around; text-align: justify;">
     
+        {% for isi in daftar_modul %}
         <div class="col-lg-6">
           <div class="card" style="max-width: 400px; margin: 0 auto; margin-bottom: 30px;">
             <div class="card-body">
-              <h5 class="card-title">Modul Python</h5>
+              <h5 class="card-title">{{isi.namamodul}}</h5>
     
               <!-- Line Chart -->
               <div id="lineChart" style="max-width: 100%; height: auto;"></div>
-              <img src="https://www.python.org/static/community_logos/python-logo-master-v3-TM-flattened.png" alt="" style="max-width: 100%; height: auto;">
+              <img src="{{ isi.photo_path }}" alt="" style="max-width: 100%; height: auto;">
     
-              <p style="margin: 20px;">Python adalah bahasa pemrograman tujuan umum yang ditafsirkan, tingkat tinggi. Dibuat oleh Guido van Rossum dan pertama kali dirilis pada tahun 1991, filosofi desain Python menekankan keterbacaan kode dengan penggunaan spasi putih yang signifikan.</p>
+              <p style="margin: 20px;">{{ isi.keterangan }}.</p>
             
-                <button class="btn" style="border: 2px solid; color: #616161; border-radius: 12px; margin: 20px;"><a href="" style="color: #616161;"><a href="./halaman_checkout/python-untuk-ilmu-data.html" style="color: #616161;">Pesan Sekarang</a></a></button>
-            </div>
-          </div>
-        </div>
-    
-        <div class="col-lg-6">
-          <div class="card" style="max-width: 400px; margin: 0 auto; margin-bottom: 30px;">
-            <div class="card-body">
-              <h5 class="card-title">Modul Java</h5>
-    
-              <!-- Line Chart -->
-              <div id="lineChart" style="max-width: 100%; height: auto;"></div>
-              <img src="https://logos-world.net/wp-content/uploads/2022/07/Java-Logo.png" alt="" style="max-width: 100%; height: 150px;">
-    
-              <p style="margin: 20px;">Java adalah bahasa pemrograman yang dapat dijalankan di berbagai komputer termasuk telepon genggam. Bahasa ini awalnya dibuat oleh James Gosling saat masih bergabung di Sun Microsystems, yang saat ini merupakan bagian dari Oracle dan dirilis tahun 1995.</p>
-              
-              <button class="btn" style="border: 2px solid; color: #616161; border-radius: 12px; margin: 20px;"><a href="" style="color: #616161;"><a href="./halaman_checkout/python-untuk-ilmu-data.html" style="color: #616161;">Pesan Sekarang</a></a></button>
+                <button class="btn" style="border: 2px solid; color: #616161; border-radius: 12px; margin: 20px;"><a href="{{ url_for('checkout', modulname=isi.namamodul)}}" style="color: #616161;">Pesan Sekarang</a></a></button>
             </div>
           </div>
         </div>
 
-        <div class="col-lg-6">
-          <div class="card" style="max-width: 400px; margin: 0 auto; margin-bottom: 30px;">
-            <div class="card-body">
-              <h5 class="card-title">Modul JavaScript</h5>
-    
-              <!-- Line Chart -->
-              <div id="lineChart" style="max-width: 100%; height: auto;"></div>
-              <img src="https://www.freepnglogos.com/uploads/javascript-png/javascript-logo-transparent-logo-javascript-images-3.png" alt="" style="max-width: 100%; height: 150px;">
-    
-              <p style="margin: 20px;">JavaScript adalah suatu bahasa pemrograman tingkat tinggi dan dinamis. JavaScript populer di internet dan dapat bekerja di sebagian besar penjelajah web populer seperti Google Chrome, Internet Explorer. Kode JavaScript dapat disisipkan dalam halaman web menggunakan tag script.</p>
-              
-              <button class="btn" style="border: 2px solid; color: #616161; border-radius: 12px; margin: 20px;"><a href="" style="color: #616161;"><a href="./halaman_checkout/python-untuk-ilmu-data.html" style="color: #616161;">Pesan Sekarang</a></a></button>
-            </div>
-          </div>
+      {% endfor %}
         </div>
 
-        <div class="col-lg-6">
-          <div class="card" style="max-width: 400px; margin: 0 auto; margin-bottom: 30px;">
-            <div class="card-body">
-              <h5 class="card-title">Modul Golang</h5>
-    
-              <!-- Line Chart -->
-              <div id="lineChart" style="max-width: 100%; height: auto;"></div>
-              <img src="https://www.digitalkode.com/images/uploads/golang-img.png" alt="" style="max-width: 100%; height: 150px;">
-    
-              <p style="margin: 20px;">Go adalah bahasa pemrograman yang dibuat di Google pada tahun 2009 oleh Robert Griesemer, Rob Pike, dan Ken Thompson. Go adalah bahasa pemrograman sumber terbuka yang mudah, sederhana, efisien. Selain itu, Go memiliki level yang sama dengan Java.</p>
-              
-              <button class="btn" style="border: 2px solid; color: #616161; border-radius: 12px; margin: 20px;"><a href="" style="color: #616161;"><a href="./halaman_checkout/python-untuk-ilmu-data.html" style="color: #616161;">Pesan Sekarang</a></a></button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6">
-          <div class="card" style="max-width: 400px; margin: 0 auto; margin-bottom: 30px;">
-            <div class="card-body">
-              <h5 class="card-title">Modul HTML</h5>
-    
-              <!-- Line Chart -->
-              <div id="lineChart" style="max-width: 100%; height: auto;"></div>
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQa-bW2a0otsQQY_SIQNZQAJEIGTouWE3llEYUIJUA&s" alt="" style="max-width: 100%; height: 150px;">
-    
-              <p style="margin: 20px;">Hypertext Markup Language adalah bahasa markah standar untuk dokumen yang dirancang untuk ditampilkan di peramban internet. Ini dapat dibantu oleh teknologi seperti Cascading Style Sheets dan bahasa skrip lainnya seperti JavaScript, VBScript, dan PHP.</p>
-              
-              <button class="btn" style="border: 2px solid; color: #616161; border-radius: 12px; margin: 20px;"><a href="" style="color: #616161;"><a href="./halaman_checkout/python-untuk-ilmu-data.html" style="color: #616161;">Pesan Sekarang</a></a></button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6">
-          <div class="card" style="max-width: 400px; margin: 0 auto; margin-bottom: 30px;">
-            <div class="card-body">
-              <h5 class="card-title">Modul CSS</h5>
-    
-              <!-- Line Chart -->
-              <div id="lineChart" style="max-width: 100%; height: auto;"></div>
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1452px-CSS3_logo_and_wordmark.svg.png" alt="" style="max-width: 100%; height: 150px;;">
-    
-              <p style="margin: 20px;">Cascading Style Sheets (CSS) merupakan bahasa pemrograman yang digunakan untuk menentukan bagaimana dokumen dan website akan disajikan. CSS dibuat oleh Word Wide Web Consortium (W3C) pada 1996.</p>
-              
-              <button class="btn" style="border: 2px solid; color: #616161; border-radius: 12px; margin: 20px;"><a href="" style="color: #616161;"><a href="./halaman_checkout/python-untuk-ilmu-data.html" style="color: #616161;">Pesan Sekarang</a></a></button>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
     

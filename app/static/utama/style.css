@@ -16,7 +16,7 @@
 
 .index .overlap {
   position: relative;
-  height: 1080px;
+  height: 100%;
   background-image: url(./img/image-3.png);
   background-size: cover;
   background-position: 50% 50%;

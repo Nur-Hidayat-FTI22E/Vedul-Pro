@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, EmailField
+from wtforms import StringField, PasswordField, SubmitField, EmailField, FileField, TelField
 from wtforms.validators import Email, DataRequired
 
 class FormLogin(FlaskForm):
@@ -10,6 +10,9 @@ class FormLogin(FlaskForm):
 
 class FormDaftar(FlaskForm):
     namalengkap = StringField("Nama Lengkap", validators=[DataRequired()])
+    username = StringField("Username", validators=[DataRequired()])
+    hp = TelField("Hp", validators=[DataRequired()])
+    
     email = EmailField("Email", validators=[DataRequired()])
     password = PasswordField("Password", validators=[DataRequired()])
     password_lagi = PasswordField("Ulangi Password", validators=[DataRequired()])
